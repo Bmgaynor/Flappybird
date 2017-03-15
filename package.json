@@ -1,0 +1,43 @@
+{
+  "name": "browserify-babel-preact",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "browserify ./client/index.js -o ./bundle/bundle.js",
+    "dev": "watchify ./client/index.js -o ./bundle/bundle.js & browser-sync start"
+  },
+  "dependencies": {
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.18.8",
+    "browserify": "^13.3.0",
+    "phaser": "^2.3.0",
+    "pixi.js": "^4.4.1",
+    "preact": "^7.1.0",
+    "watchify": "^3.9.0"
+  },
+  "babel": {
+    "presets": [
+      "latest",
+      "react"
+    ],
+    "plugins": [
+      [
+        "transform-react-jsx",
+        {
+          "pragma": "h"
+        }
+      ]
+    ]
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
+  "browser-sync": {
+    "server": {
+      "baseDir": "./"
+    }
+  }
+}

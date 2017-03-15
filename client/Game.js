@@ -1,4 +1,5 @@
 // Initialize Phaser, and creates a 400x490px game
+
 var game = new Phaser.Game(400, 490, Phaser.AUTO, 'GameDiv');
 var score1 = 0;
 var score2 = 0;

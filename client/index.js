@@ -1,0 +1,4 @@
+import Game from './Game'
+import { render, h } from 'preact'
+import App from './App'
+render(<App />, document.querySelector('#App'))

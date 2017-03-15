@@ -2,3 +2,5 @@ bootstrap/
 .idea/
 phaser-master/
 pixi.js-master/
+node_modules/
+bundle/
