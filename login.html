@@ -1,0 +1,70 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Sign in to Flappy Bird</title>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="signin.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in or sign up</h2>
+        <label for="inputUsername" class="sr-only">u]Username</label>
+        <input type="email" id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <button class="btn btn-lg btn-primary btn-block" id="submit" type="submit">Sign in</button>
+      </form>
+        <p id="status"> </p>
+    </div> <!-- /container -->
+</body>
+
+<script>
+    $(document).ready(function(){
+
+        $("#submit").click(function(event){
+            event.preventDefault(); // stop form submit
+            var user_name = $("#inputUsername").val();
+            var password = $("#inputPassword").val();
+            var reqBody = {
+                            inputUsername: user_name,
+                            inputPassword: password
+                            };
+            $.ajax({
+                type: "POST",
+                url: "/login",
+                data: reqBody,
+                dataType: "json",
+                success: function(data) {
+                if (data.status == "golden") {
+                    // data.redirect contains the string URL to redirect to
+                    console.log(data);
+                    window.location.href = "/";
+                }
+                else {
+                    // data.form contains the HTML for the replacement form
+
+                   //todo add the status
+                    $("#status").val(data.status);
+                }
+              }
+            });
+        });
+    });
+</script>
+
+
+</html>

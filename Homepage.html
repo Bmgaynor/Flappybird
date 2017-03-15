@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %} {{ title }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+
+    <h1> Welcome to Flappy Birddy</h1>
+
+    <h3>Game Controls</h3>
+    <p>
+        For single player just space is the control. <br>
+        2 player games its space for player 1 and 'a' for player 2.<br>
+        For Coop mode you work together get the high score!<br>
+            When one player dies the other player must clear <br>
+            4 pipes before the dead player respawns and can fly again
+    </p>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %} {{ title }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+        <div id="GameDiv"></div>
+        <script type="text/javascript" src="/phaser-master/build/phaser.js"></script>
+        <script src="/javascript/SinglePlayer.js"></script>
+{% endblock %}

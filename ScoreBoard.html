@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %} {{ title }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+
+    <h3> Single Player Scores</h3>
+    <table>
+        <thead> <tr> <th>Player</th><th>Score</th></tr></thead>
+        <tbody>
+        {% for player in players1 %}
+            <tr><td>{{player.username}} </td> <td>{{player.score}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h3> Coop Scores</h3>
+    <table>
+        <thead> <tr> <th>Player</th><th>Score</th></tr></thead>
+        <tbody>
+        {% for player in players2 %}
+            <tr><td>{{player.username}} </td> <td>{{player.coopscore}}</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

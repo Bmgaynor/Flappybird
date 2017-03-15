@@ -1,0 +1,34 @@
+application: flappy-bird1234
+version: 4
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /stylesheets
+  static_dir: stylesheets
+
+- url: /phaser-master
+  static_dir: phaser-master
+
+- url: /javascript
+  static_dir: javascript
+
+- url: /files
+  static_dir: files
+
+- url: /bootstrap
+  static_dir: bootstrap
+
+- url: .*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest

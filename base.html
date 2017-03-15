@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    {% block head %}
+        <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.3.min.js"></script>
+        <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+        <title>{% block title %}{% endblock %} - My Webpage</title>
+        <link type="text/css" rel="stylesheet" href="/stylesheets/Base.css">
+    {% endblock %}
+    <style>
+        body {
+            background-color: deepskyblue;
+        }
+    </style>
+
+</head>
+
+<body>
+    <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '574715192685592',
+              xfbml      : true,
+              version    : 'v2.5'
+            });
+          };
+    </script>
+ <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=574715192685592";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Flappy Bird</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li {% if home %} class="active" {% endif %}><a href="/">Home<span class="sr-only">(current)</span></a></li>
+            <li {% if singlebird %} class="active" {% endif %}><a href="/SingleBird">Single player</a></li>
+            <li {% if coopbird %} class="active" {% endif %}><a href="/CoopBird">2 Player Coop</a></li>
+            <li {% if twoplayervs %} class="active" {% endif %}><a href="/2playerVS">2 Player VS</a></li>
+            <li {% if scoreboard %} class="active" {% endif %}><a href="/Scoreboard">ScoreBoard</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if user %}
+            <li id="scoreLabel">Coopscore: {{ user.coopscore }} <br>
+                Score: {{ user.score}}
+            </li>
+            <input id="coopscore" hidden="hidden" value="{{user.coopscore}}">
+            <input id="score" hidden="hidden" value="{{user.score}}">
+            <input id="username" hidden="hidden" value="{{login}}">
+            {% endif %}
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >{{login}}<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/login">Login</a></li>
+                {% if user %}
+                <li><a href="/logout">Logout</a></li>
+                {% endif %}
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div  id="content">{% block content %}{% endblock %}</div>
+    <div id="FBComments">
+        <div class="fb-comments" data-href="flappy-bird1234.appspot.com/" data-numposts="5"></div>
+    </div>
+
+</body>
+</html>
